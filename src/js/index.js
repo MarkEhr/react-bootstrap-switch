@@ -22,7 +22,7 @@ export default class Switch extends React.Component {
     this._recalculateWidth();
   }
 
-  componentWillReceiveProps(nextProps){
+  UNSAFE_componentWillReceiveProps(nextProps){
     const newValue = nextProps.value !== undefined ? nextProps.value : this.state.value;
     const oldValue = this.state.value;
 
@@ -145,7 +145,7 @@ export default class Switch extends React.Component {
       newOffset = -(handleWidth / 2);
     } else if (value) {
       newOffset = inverse ? -handleWidth : 0;
-    } else { 
+    } else {
       newOffset = inverse ? 0 : -handleWidth;
     }
 
@@ -204,7 +204,7 @@ export default class Switch extends React.Component {
 
   _handleLabelMouseMove(e){
     const { dragStart, handleWidth } = this.state;
-    
+
     if(dragStart === undefined || dragStart === null || dragStart === false)
       return;
 
@@ -216,12 +216,12 @@ export default class Switch extends React.Component {
       skipAnimation: false,
       offset: difference,
       dragged: true
-    }); 
+    });
   }
 
   _handleLabelTouchEnd(){
     const { dragStart, dragged, offset, handleWidth } = this.state;
-    
+
     if(dragStart === undefined || dragStart === null || dragStart === false)
       return;
 
@@ -235,7 +235,7 @@ export default class Switch extends React.Component {
     }
 
     const { inverse } = this.props;
-    
+
     let val = offset > -(handleWidth / 2);
     val = inverse ? !val : val;
 
@@ -252,14 +252,14 @@ export default class Switch extends React.Component {
   _handleLabelMouseUp(){
     const { dragStart, dragged, offset, handleWidth } = this.state;
     const value = this._getValue();
-    
+
     if(dragStart === undefined || dragStart === null || dragStart === false)
       return;
 
     const { inverse, tristate } = this.props;
 
     let val;
-    
+
     if(dragged){
       val = offset > -(handleWidth / 2);
       val = inverse ? !val : val;
@@ -317,7 +317,7 @@ export default class Switch extends React.Component {
   render() {
     const { baseClass, inverse } = this.props;
     const { handleWidth, labelWidth, offset } = this.state;
-  
+
     const onHandle = this._renderOnHandle();
     const offHandle = this._renderOffHandle();
 

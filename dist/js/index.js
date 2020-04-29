@@ -52,8 +52,8 @@ var Switch = function (_React$Component) {
       this._recalculateWidth();
     }
   }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
+    key: 'UNSAFE_componentWillReceiveProps',
+    value: function UNSAFE_componentWillReceiveProps(nextProps) {
       var _this2 = this;
 
       var newValue = nextProps.value !== undefined ? nextProps.value : this.state.value;
